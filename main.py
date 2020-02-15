@@ -27,7 +27,7 @@ with open('grid_file', 'rb') as grid_file:
     env.grid = pickle.load(grid_file)
 
 
-for b in range(3):
+for b in range(env.n_hubs):
     with open('hub_' + str(b), 'rb') as hub_file:
         env.hubs.append(pickle.load(hub_file))
 

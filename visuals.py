@@ -56,7 +56,7 @@ def draw_scene(t, dr):
 
                 if "collision" in en.grid.grid[t][i][j]:
                     pygame.draw.circle(screen, white, cartesian_to_screen(hp.coorToCartesian([i, j], en.grid.n)), 6)
-    for hub in en.hubs[0:1]:
+    for hub in en.hubs:
         pygame.draw.circle(screen, yellow, cartesian_to_screen(hub.node.pos), 10)                                   # Draw hub
 
         for node in hub.graph.nodes:                                                                                # Draw nodes

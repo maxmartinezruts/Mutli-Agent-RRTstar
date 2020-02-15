@@ -7,11 +7,9 @@ import hub as hb
 """ Run RRT* on each hub graph """
 env.grid = og.ObstacleGrid(env.t_simulation)
 
-num_hubs = 3
 
 
-
-for i in range(num_hubs):
+for i in range(env.n_hubs):
    env.hubs.append(hb.Hub())
 
 for t in range(env.t_expand):
