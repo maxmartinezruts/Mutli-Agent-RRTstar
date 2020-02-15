@@ -1,5 +1,4 @@
 from environment import env
-<<<<<<< HEAD
 
 import visuals as vs
 import drone as dr
@@ -19,7 +18,7 @@ for t in range(env.t_expand):
 
     if t%100==0:
         vs.draw_scene(0, [])
-=======
+
 import visuals as vs
 import drone as dr
 import pickle
@@ -35,8 +34,6 @@ for b in range(3):
         env.hubs.append(pickle.load(hub_file))
 
 
-
->>>>>>> my first git commit
 
 """ Create a drone each 100 timesteps """
 for t in range(env.t_simulation):
