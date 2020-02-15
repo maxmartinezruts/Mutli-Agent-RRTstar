@@ -4,18 +4,18 @@ import visuals as vs
 import obstacle_grid as og
 import hub as hb
 
-env.grid = og.ObstacleGrid(env.t_simulation)
-
-for i in range(1):
-    env.hubs.append(hb.Hub())
-
-""" Run RRT* on each hub graph """
-for t in range(env.t_expand):
-    for hub in env.hubs:
-        hub.graph.newIteration()
-
-    if t%10==0:
-        vs.draw_scene(0, [])
+# env.grid = og.ObstacleGrid(env.t_simulation)
+#
+# for i in range(1):
+#     env.hubs.append(hb.Hub())
+#
+# """ Run RRT* on each hub graph """
+# for t in range(env.t_expand):
+#     for hub in env.hubs:
+#         hub.graph.newIteration()
+#
+#     if t%10==0:
+#         vs.draw_scene(0, [])
 
 import visuals as vs
 import drone as dr
