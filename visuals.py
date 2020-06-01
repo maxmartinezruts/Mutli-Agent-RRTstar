@@ -68,16 +68,17 @@ def draw_scene(t, dr):
     for drone in dr:                                                                                            # Draw drones
         pygame.draw.circle(screen, white, cartesian_to_screen(drone.node.pos), 10)
 
-        for node in drone.graph.nodes:                                                                                # Draw nodes
+        for node in drone.hub.graph.nodes:                                                                                # Draw nodes
             pygame.draw.circle(screen, gray, cartesian_to_screen(node.pos), 2)
 
-        for edge in drone.graph.edges:
+        for edge in drone.hub.graph.edges:
             pygame.draw.line(screen, white, cartesian_to_screen(edge.st.pos), cartesian_to_screen(edge.en.pos),1)    # Draw edges
         if drone.path != None:  # Draw path
             for edge in drone.path.edges:
                 pygame.draw.line(screen, yellow, cartesian_to_screen(edge.st.pos), cartesian_to_screen(edge.en.pos), 4)
-    for drone in en.drones:
-        pygame.draw.circle(screen, green, cartesian_to_screen(drone.node.pos), 5)
+    # for drone in en.drones:
+    #     if len(drone.trace)>0:
+    #         pygame.draw.circle(screen, green, cartesian_to_screen(drone.trace[t%len(drone.trace)]), 10)
 
     pygame.display.flip()
 

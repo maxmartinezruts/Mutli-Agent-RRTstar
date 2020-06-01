@@ -2,7 +2,7 @@ import random
 import RRT_star as rrt
 from environment import env as en
 import helpers as hp
-
+import numpy as np
 class Drone:
 
     v = 0.05
@@ -13,14 +13,16 @@ class Drone:
         self.path = None
         self.node = rrt.Node(hp.random_pos_collision_free(),None)
         self.trace = []
+        self.check_path()
+        self.create_trace()
 
 
     def check_path(self):
         """ If n_new is close to drone, create path and if cost of path is lower than lowest yet found, set path as new path of drone """
 
-        for n_new  in self.graph.nodes:
+        for n_new  in self.hub.graph.nodes:
             if np.linalg.norm(n_new.pos - self.node.pos) < 0.5:
-                path = rrt.Path(n_new, self.graph.nodes[0], self)
+                path = rrt.Path(n_new, self.hub.graph.nodes[0], self)
                 if self.path == None or path.cost < self.path.cost:
                     self.path = path
 
@@ -45,12 +47,12 @@ class Drone:
                 i += 1
                 dis_covered = dis_covered + self.v - edge.len
 
-        self.add_trace_to_grid(self, self.trace, self.t_start)
+        self.add_trace_to_grid(self.trace, self.t_start)
 
     def check_collisions(self):
-        for node in self.graph.nodes:
+        for node in self.hub.graph.nodes:
             if len(grid.grid[min(int(node.cost/self.v)+self.t_start, t_simulation-1)][node.coor_obs[0]][node.coor_obs[1]]):
-                self.graph.delete_tree(node)
+                self.hub.graph.delete_tree(node)
 
     def add_trace_to_grid(self, trace, t_start):
 

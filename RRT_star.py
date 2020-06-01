@@ -51,7 +51,7 @@ class Path:
         self.edges = []                                         # Start empty list of edges
 
 
-        edge_drone_leaf = Edge(leaf, drone.node, drone.graph)
+        edge_drone_leaf = Edge(leaf, drone.node, drone.hub.graph)
         self.edges.append(edge_drone_leaf)
         self.cost += edge_drone_leaf.cost
         node = leaf                                             # Start from the leaf
